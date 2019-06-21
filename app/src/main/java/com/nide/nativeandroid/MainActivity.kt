@@ -1,0 +1,22 @@
+package com.nide.nativeandroid
+
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+
+import com.nide.naengine.*
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var renderer = NativeRenderer()
+        var engine = NAEngine()
+
+        // Example of a call to a native method
+        sample_text.text = renderer.name + " and " + engine.name
+        engine.compute()
+    }
+}
