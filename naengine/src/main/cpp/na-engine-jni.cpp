@@ -10,6 +10,18 @@
 
 // some details: http://stylishtoupee.blogspot.com/2011/07/jni-example-with-class-instantiation-c.html
 
+extern "C" JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
+    JNIEnv* env;
+    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        return -1;
+    }
+
+    // Get jclass with env->FindClass.
+    // Register methods with env->RegisterNatives.
+
+    return JNI_VERSION_1_6;
+}
+
 extern "C" JNIEXPORT jlong JNICALL
 Java_com_nide_naengine_NAEngine_createNAEngine(JNIEnv *, jobject, jlong value) {
     // Some init values that can be passed
@@ -29,6 +41,18 @@ extern "C" JNIEXPORT jstring JNICALL
 Java_com_nide_naengine_NAEngine_getNameJNI(JNIEnv *env, jobject) {
     std::string hello = "This is NativeRenderer";
     return env->NewStringUTF(hello.c_str());
+}
+
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_nide_naengine_NAEngine_draw(JNIEnv *env, jobject, jlong ptr) {
+    NAEngine *engine_ptr = reinterpret_cast<NAEngine*>(ptr);
+    if(engine_ptr) {
+        engine_ptr->draw();
+    } else  {
+        // Shit
+    }
+    return;
 }
 
 extern "C" JNIEXPORT jint JNICALL

@@ -11,8 +11,9 @@
 class NAEngine {
 public:
     int compute(int value);
-    std::string readFile(const std::string& path);
-        private:
+    void draw();
+    std::string readFile(const std::string& filepath);
+private:
     std::optional<int> foo_;
 };
 
