@@ -4,8 +4,8 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 
-add_library(native-lib SHARED na-engine-jni.cpp na-engine.cpp)
+add_library(naenginelib SHARED na-engine-jni.cpp na-engine.cpp)
 
 find_library(log-lib log)
 
-target_link_libraries(native-lib ${log-lib})
+target_link_libraries(naenginelib ${log-lib})

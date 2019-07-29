@@ -4,8 +4,8 @@ public class NAEngine {
     private long engine_ptr_;
 
     public NAEngine() {
+        System.loadLibrary("naenginelib");
         engine_ptr_ = createNAEngine(4);
-        System.loadLibrary("native-lib");
     }
 
     public void destroy() {

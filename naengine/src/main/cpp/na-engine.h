@@ -5,12 +5,14 @@
 #ifndef NATIVEANDROID_NAENGINE_H
 #define NATIVEANDROID_NAENGINE_H
 
+#include <string>
 #include <optional>
 
 class NAEngine {
 public:
     int compute(int value);
-private:
+    std::string readFile(const std::string& path);
+        private:
     std::optional<int> foo_;
 };
 
